@@ -80,6 +80,14 @@ if (device_permitted($vars['device']) || $permitted_by_port) {
                 </li>';
         }
 
+	if (dbFetchCell("SELECT 1 FROM netapp_df WHERE device_id = ?", array($device['device_id']))) {
+            echo '<li role="presentation" '.$select['apps'].'>
+                <a href="'.generate_device_url($device, array('tab' => 'netapp')).'">
+                <i class="fa fa-cubes fa-lg icon-theme" aria-hidden="true"></i> NetApp
+                </a>
+                </li>';
+        }
+
         if (dbFetchCell("SELECT 1 FROM applications WHERE device_id = ?", array($device['device_id']))) {
             echo '<li role="presentation" '.$select['apps'].'>
                 <a href="'.generate_device_url($device, array('tab' => 'apps')).'">
