@@ -114,10 +114,10 @@ class Cisco extends OS implements ProcessorDiscovery, NacPolling
             );
         }
 
-	// QFP processors (Forwarding Processors)
-	$qfp_data = snmpwalk_group($this->getDevice(), 'ceqfpUtilProcessingLoad', 'CISCO-ENTITY-QFP-MIB');
+        // QFP processors (Forwarding Processors)
+        $qfp_data = snmpwalk_group($this->getDevice(), 'ceqfpUtilProcessingLoad', 'CISCO-ENTITY-QFP-MIB');
 
-        foreach ($qfp_data as $entQfpPhysicalIndex => $entry ) {
+        foreach ($qfp_data as $entQfpPhysicalIndex => $entry) {
             /*
              * .2 OID suffix is for 1 min SMA ('oneMinute')
              * .3 OID suffix is for 5 min SMA ('fiveMinute')
